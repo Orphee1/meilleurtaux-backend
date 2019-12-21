@@ -25,10 +25,12 @@ require("./models/Customer");
 // Importation des routes
 const customersRoutes = require("./routes/customers");
 const customerRoutes = require("./routes/customer");
+const loginRoutes = require("./routes/login");
 
 // Activation des routes
 app.use(customersRoutes);
 app.use(customerRoutes);
+app.use(loginRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log("Server started on port", process.env.PORT);
