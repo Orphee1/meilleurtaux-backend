@@ -11,9 +11,15 @@ const Customer = require("../models/Customer");
 
 // READ ==========================================================
 
-router.get("/customer", (req, res) => {
+router.get("/customer", async (req, res) => {
   console.log("route read customer OK");
-  res.status(200).json({ message: "route read customer OK" });
+  try {
+    const allCustomers = await Customer.find();
+    res.status(200).json(allCustomers);
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ message: error.message });
+  }
 });
 
 // CREATE ========================================================
@@ -91,6 +97,24 @@ router.post("/customer/create", async (req, res) => {
   } catch (error) {
     console.log(error.message);
     res.status(400).json({ message: "an error occured" });
+  }
+});
+
+// DELETE ========================================================
+router.post("/customer/delete", async (req, res) => {
+  console.log("route delete ok");
+  try {
+    let id = req.query.id;
+    const customerToDelete = await Customer.findById(id);
+    if (customerToDelete) {
+      customerToDelete.remove();
+      res.status(200).json({ message: "Customer removed" });
+    } else {
+      res.json({ message: "Customer not found" });
+    }
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json({ message: error.message });
   }
 });
 
