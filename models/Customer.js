@@ -44,6 +44,9 @@ const Customer = mongoose.model("Customer", {
   email: {
     type: String,
     default: ""
+  },
+  number: {
+    type: Number
   }
 });
 

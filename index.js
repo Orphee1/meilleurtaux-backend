@@ -1,11 +1,16 @@
 require("dotenv").config();
 
+const mailgun = require("mailgun-js");
+const API_KEY = "key-0e0307189be7ed0249cbb73e7909f8cf";
+const DOMAIN = "mg.lereacteur.io";
+const mg = mailgun({ apiKey: API_KEY, domain: DOMAIN });
+
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
-
 const app = express();
+
 app.use(cors());
 app.use(bodyParser.json());
 
