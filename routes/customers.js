@@ -98,6 +98,7 @@ router.post("/customers/create", async (req, res) => {
     });
   } catch (error) {
     console.log(error.message);
+    console.log(error);
     res.status(400).json({ message: "an error occured" });
   }
 });
