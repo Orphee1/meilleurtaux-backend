@@ -2,8 +2,10 @@ const express = require("express");
 const router = express.Router();
 
 const mailgun = require("mailgun-js");
-const API_KEY = process.env.API_KEY;
-const DOMAIN = process.env.DOMAIN;
+// const API_KEY = process.env.API_KEY;
+// const DOMAIN = process.env.DOMAIN;
+const API_KEY = "key-0e0307189be7ed0249cbb73e7909f8cf";
+const DOMAIN = "mg.lereacteur.io";
 const mg = mailgun({ apiKey: API_KEY, domain: DOMAIN });
 
 // Importation des modèles
