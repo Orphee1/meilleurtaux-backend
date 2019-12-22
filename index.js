@@ -34,6 +34,16 @@ app.use(customersRoutes);
 app.use(customerRoutes);
 app.use(userRoutes);
 
+// Test Route
+app.get("/", async (req, res) => {
+  try {
+    res.json({ message: "hello MeilleurTaux" });
+  } catch (error) {
+    console.log(error.message);
+    res.status(400).json(error.message);
+  }
+});
+
 app.listen(process.env.PORT, () => {
   console.log("Server started on port", process.env.PORT);
 });
