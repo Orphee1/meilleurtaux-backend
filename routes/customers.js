@@ -83,11 +83,11 @@ router.post("/customers/create", async (req, res) => {
         ville +
         "; Prix d'achat: " +
         prix_achat +
-        "; Montant des travaux: " +
+        " €; Montant des travaux: " +
         prix_travaux +
-        "; Frais de notaire: " +
+        " €; Frais de notaire: " +
         frais_de_notaire +
-        "; Coût total: " +
+        " €; Coût total: " +
         total +
         " Votre numéro de dossier: " +
         number +
@@ -111,7 +111,7 @@ router.post("/customers/delete", async (req, res) => {
     const customerToDelete = await Customer.findById(id);
     if (customerToDelete) {
       customerToDelete.remove();
-      res.status(200).json({ message: "Customer removed" });
+      res.status(200).json(customerToDelete._id);
     } else {
       res.json({ message: "Customer not found" });
     }
