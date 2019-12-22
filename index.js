@@ -21,16 +21,17 @@ mongoose.connect(process.env.MONGODB_URI, {
 
 // Importation des modèles
 require("./models/Customer");
+require("./models/User");
 
 // Importation des routes
 const customersRoutes = require("./routes/customers");
 const customerRoutes = require("./routes/customer");
-const loginRoutes = require("./routes/login");
+const userRoutes = require("./routes/user");
 
 // Activation des routes
 app.use(customersRoutes);
 app.use(customerRoutes);
-app.use(loginRoutes);
+app.use(userRoutes);
 
 app.listen(process.env.PORT, () => {
   console.log("Server started on port", process.env.PORT);
